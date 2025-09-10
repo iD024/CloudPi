@@ -34,17 +34,16 @@ exports.registerUser = async (req, res) => {
         id: user.id, //ALWAYS UNIQUE so we sign this with token
       },
     };
-
     // signs the token
     jwt.sign(
       payload,
       "TokenKEY",
-      { expiresIn: 3600 },
-      (err,
-      (token) => {
+      { expiresIn: 3600 }, // expires in 1 hour
+      (err, token) => {
+        // Correct: (err, token) are two parameters in one function
         if (err) throw err;
         res.json({ token });
-      })
+      }
     );
   } catch (err) {
     console.error(err.message);

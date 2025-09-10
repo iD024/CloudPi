@@ -8,7 +8,7 @@ const PORT = 5000;
 
 //middlewares :
 app.use(express.json({ extended: false })); //
-app.use("/api/users", require("./routes/users")); //
+app.use("/api/users", require("../server/routes/userRoutes")); //
 
 //main route aka main page
 app.get("/", (req, res) => {

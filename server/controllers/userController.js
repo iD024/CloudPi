@@ -56,7 +56,7 @@ exports.loginUser = async (req, res) => {
     let user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(400).json({ msg: "Account doesn't Exist" });
+      return res.status(400).json({ msg: "Invalid Credentials" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
@@ -79,5 +79,3 @@ exports.loginUser = async (req, res) => {
     res.status(500).send("Server error");
   }
 };
-
-
